@@ -1,0 +1,78 @@
+<div class="container mt-5">
+
+  <div>
+    <h2>Create card :</h2>
+  </div>
+
+  <form [formGroup]="creationForm" (submit)="creationCard()">
+
+    <div class="col-sm-6 col-md-4" >
+      <label>Card name</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card picture</label>
+      <input type="text" name="CardPicture" class="form-control" formControlName="picture">
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card level</label>
+      <input type="number" min="1" name="CardLevel" class="form-control" formControlName="powerLvl">
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card description</label>
+      <input type="text" name="CardDescription" class="form-control" formControlName="description">
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card location</label>
+      <input type="text" name="CardLocation" class="form-control" formControlName="location">
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card ability</label>
+      <input type="text" name="CardAbility" class="form-control" formControlName="ability">
+
+      <!--
+      <label for="ability">Choose an ability:</label>
+      <select id="ability" [(ngModel)]= "newCard.ability">
+         <option>Choose an option</option>
+         <option label="BERSERKER">Berserker</option>
+         <option label="COMMANDER">Commander</option>
+         <option label="DECOY">Decoy</option>
+         <option label="MEDIC">Medic</option>
+         <option label="MORALE_BOOST">Morale boost</option>
+         <option label="MARDROEME">Mardroeme</option>
+         <option label="MUSTER">Muster</option>
+         <option label="SCORCH">Scorch</option>
+         <option label="SPY">Spy</option>
+         <option label="TIGHT_BOND">TightBond</option>
+         <option label="SUMMON_AVENGER">SummonAvenger</option>
+       </select>
+       -->
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card row name</label>
+      <input type="text" name="CardRowname" class="form-control" formControlName="rowName">
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <label>Card type</label>
+      <input type="text" name="CardType" class="form-control" formControlName="type">
+    </div>
+
+
+    <div *ngIf="error != ''">
+      <p>{{error}}</p>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" class="btn btn-success">Create</button>
+    </div>
+
+  </form>
+</div>
+
