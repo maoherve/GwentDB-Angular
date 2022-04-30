@@ -32,36 +32,43 @@
     </div>
 
     <div class="col-sm-6 col-md-4">
-      <label>Card ability</label>
-      <input type="text" name="CardAbility" class="form-control" formControlName="ability">
-
-      <!--
       <label for="ability">Choose an ability:</label>
-      <select id="ability" [(ngModel)]= "newCard.ability">
+      <select id="ability" formControlName="ability">
          <option>Choose an option</option>
-         <option label="BERSERKER">Berserker</option>
-         <option label="COMMANDER">Commander</option>
-         <option label="DECOY">Decoy</option>
-         <option label="MEDIC">Medic</option>
-         <option label="MORALE_BOOST">Morale boost</option>
-         <option label="MARDROEME">Mardroeme</option>
-         <option label="MUSTER">Muster</option>
-         <option label="SCORCH">Scorch</option>
-         <option label="SPY">Spy</option>
-         <option label="TIGHT_BOND">TightBond</option>
-         <option label="SUMMON_AVENGER">SummonAvenger</option>
+         <option label="BERSERKER">BERSERKER</option>
+         <option label="COMMANDER">COMMANDER</option>
+         <option label="DECOY">DECOY</option>
+         <option label="MEDIC">MEDIC</option>
+         <option label="MORALE_BOOST">MORALE_BOOST</option>
+         <option label="MARDROEME">MARDROEME</option>
+         <option label="MUSTER">MUSTER</option>
+         <option label="SCORCH">SCORCH</option>
+         <option label="SPY">SPY</option>
+         <option label="TIGHT_BOND">TIGHT_BOND</option>
+         <option label="SUMMON_AVENGER">SUMMON_AVENGER</option>
        </select>
-       -->
     </div>
 
     <div class="col-sm-6 col-md-4">
-      <label>Card row name</label>
-      <input type="text" name="CardRowname" class="form-control" formControlName="rowName">
+      <label for="row">Choose an row:</label>
+      <select id="row" formControlName="rowName">
+        <option>Choose an option</option>
+        <option label="CLOSE_COMBAT">CLOSE_COMBAT</option>
+        <option label="RANGED">RANGED</option>
+        <option label="AGILE">AGILE</option>
+        <option label="SIEGE">SIEGE</option>
+      </select>
     </div>
 
     <div class="col-sm-6 col-md-4">
-      <label>Card type</label>
-      <input type="text" name="CardType" class="form-control" formControlName="type">
+      <label for="type">Choose a type:</label>
+      <select id="type" formControlName="type">
+        <option>Choose an option</option>
+        <option label="UNIT">UNIT</option>
+        <option label="LEADER">LEADER</option>
+        <option label="HERO">HERO</option>
+        <option label="SPECIAL">SPECIAL</option>
+      </select>
     </div>
 
 
