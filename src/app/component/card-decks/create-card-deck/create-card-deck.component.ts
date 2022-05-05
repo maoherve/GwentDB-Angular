@@ -35,7 +35,7 @@ export class CreateCardDeckComponent implements OnInit {
 
       this.cardDeckService.createCardDeck(data).subscribe(response => {
         console.log('Card deck created');
-        this.router.navigate(['card']).then(() => {
+        this.router.navigate(['cardDeck']).then(() => {
           window.location.reload();})
       });
     } else {
