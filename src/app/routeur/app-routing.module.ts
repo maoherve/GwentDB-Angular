@@ -8,12 +8,15 @@ import {UpdateCardDeckComponent} from "../component/card-decks/update-card-deck/
 import {CreateCardDeckComponent} from "../component/card-decks/create-card-deck/create-card-deck.component";
 import {UserComponent} from "../component/users/user/user.component";
 import {HomeCardComponent} from "../component/cards/home-card/home-card.component";
+import {LoginComponent} from "../component/log/login/login.component";
+import {ProfileComponent} from "../component/users/profile/profile.component";
+import { AuthGuard } from "../service/log/auth-guard.service";
 
 const routes: Routes = [
 
-
-  { path: 'card', component: CardComponent },
   { path: 'home', component: HomeCardComponent },
+
+  { path: 'card', component: CardComponent/*, canActivate: [AuthGuard] */},
   { path: 'cardDeck', component: CardDeckComponent },
   { path: 'updateCard/:id', component: UpdateCardComponent },
   { path: 'createCard', component: CreateCardComponent },
@@ -22,6 +25,8 @@ const routes: Routes = [
   { path: 'createCardDeck', component: CreateCardDeckComponent },
 
   { path: 'user', component: UserComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
 
   { path: "", redirectTo: "card", pathMatch: "full" },
 ];
