@@ -7,10 +7,8 @@
       <table class="table table-striped text-center">
         <thead>
         <tr>
-          <th>id</th>
           <th>Username</th>
           <th>Email</th>
-          <th>Password</th>
           <th>Role</th>
 
           <th colspan="2">Action</th>
@@ -18,11 +16,10 @@
         </thead>
         <tbody *ngFor="let user of users ">
         <tr>
-          <td>{{user.id}}</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
-          <td>{{user.password}}</td>
           <td>{{user.role}}</td>
+
 
 
         </tr>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {CardDeck} from "../../../model/cardDeck.modele";
-import {CardDeckService} from "../../../service/card-deck.service";
+import {CardDeckService} from "../../../service/card/card-deck.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -35,7 +35,7 @@ export class CreateCardDeckComponent implements OnInit {
 
       this.cardDeckService.createCardDeck(data).subscribe(response => {
         console.log('Card deck created');
-        this.router.navigate(['card']).then(() => {
+        this.router.navigate(['cardDeck']).then(() => {
           window.location.reload();})
       });
     } else {

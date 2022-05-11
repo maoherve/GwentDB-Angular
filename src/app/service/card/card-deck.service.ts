@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {CardDeck} from "../model/cardDeck.modele";
-import {environment} from "../../environments/environment";
+import {CardDeck} from "../../model/cardDeck.modele";
+import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
-import {Card} from "../model/card.modele";
+import {Card} from "../../model/card.modele";
 
 
 const httpOptions = {
