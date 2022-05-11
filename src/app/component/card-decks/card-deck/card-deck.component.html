@@ -12,8 +12,8 @@
             <th colspan="2">Action</th>
           </tr>
         </thead>
-        <tbody *ngFor="let cardDeck of cardDecks">
-          <tr>
+        <tbody>
+          <tr  *ngFor="let cardDeck of cardDecks">
             <td class="col">{{cardDeck.id}}</td>
             <td class="col">{{cardDeck.name}}</td>
             <td><a class="btn btn-danger" (click)="deleteCardDeck(cardDeck)">Delete</a></td>

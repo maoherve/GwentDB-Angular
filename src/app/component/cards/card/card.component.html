@@ -24,8 +24,8 @@
             <th colspan="2">Action</th>
           </tr>
         </thead>
-        <tbody *ngFor="let card of cards | filter:searchText">
-          <tr>
+        <tbody>
+          <tr *ngFor="let card of cards | filter:searchText">
             <td>{{card.id}}</td>
             <td>{{card.name}}</td>
             <td>{{card.picture}}</td>
