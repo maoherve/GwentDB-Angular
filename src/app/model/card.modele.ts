@@ -8,10 +8,10 @@ export class Card {
   private _powerLvl : number = 0;
   private _description : string = "";
   private _location : string = "";
-  private _cardDeck : CardDeck = new CardDeck();
   private _ability : string = "";
   private _rowName : string = "";
   private _type : string = "";
+  private _cardDeck : CardDeck = new CardDeck();
 
 
   constructor() {

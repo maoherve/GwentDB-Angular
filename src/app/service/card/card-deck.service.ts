@@ -37,7 +37,7 @@ export class CardDeckService {
   //Update
   showCardDeck(id: number): Observable<CardDeck> {
     const url = `${environment.API_URL}/cardDecks/${id}`;
-    return this.httpClient.get<Card>(url);
+    return this.httpClient.get<CardDeck>(url);
   }
   updateCardDeck(cardDeck : CardDeck) : Observable<CardDeck>
   {
