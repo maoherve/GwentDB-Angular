@@ -71,6 +71,52 @@ export class CreateCardComponent implements OnInit {
     });
   }
 
+
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      const id: string = params['id'];
+      if (id) {
+        // récupérer l'objet card depuis l'api
+        this.cardService.showCard(this.activatedRoute.snapshot.params['id']).
+        subscribe( card =>{ this.card = card;
+        });
+        // initialiser l'attribut "card" avec celle-ci
+        console.log('ici dans le if')
+        this.onEdition = true;
+
+      }
+    });
+    this.cardDeckService.getAll().subscribe(data => {
+      this.cardDecks = data;
+    });
+  }
+
+  creationCard() {
+
+    this.error = '';
+
+    if(this.creationForm.valid) {
+      const data: any = this.creationForm.value;
+
+      this.cardService.createCard(data).subscribe(response => {
+        console.log('Card created');
+        this.router.navigate(['card']).then(() => {
+          window.location.reload();})
+      });
+    } else {
+      this.error = `Formulaire as some errors`;
+    }
+  }
+
+  updateCard() {
+    this.cardService.updateCard(this.card).subscribe(() => {
+        this.router.navigate(['card']);
+      },(error) => { alert("error when modification sub"); }
+    );
+  }
+
+
   get name(): AbstractControl {
     return <AbstractControl> this.creationForm.get('name');
   }
@@ -98,40 +144,4 @@ export class CreateCardComponent implements OnInit {
   get cardDeck(): AbstractControl {
     return <AbstractControl> this.creationForm.get('cardDeck');
   }
-
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id: string = params['id'];
-      if (id) {
-        // récupérer l'objet card depuis l'api
-        // initialiser l'attribut "card" avec celle-ci
-        console.log('ici dans le if')
-        this.onEdition = true;
-
-      }
-    });
-    this.cardDeckService.getAll().subscribe(data => {
-      this.cardDecks = data;
-    });
-  }
-
-  creationCard() {
-
-    this.error = '';
-
-    if(this.creationForm.valid) {
-      const data: any = this.creationForm.value;
-
-      console.log({data});
-
-      this.cardService.createCard(data).subscribe(response => {
-        console.log('Card created');
-        this.router.navigate(['card']).then(() => {
-          window.location.reload();})
-      });
-    } else {
-      this.error = `Formulaire as some errors`;
-    }
-  }
-
 }

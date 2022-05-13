@@ -15,6 +15,7 @@
              formControlName="name"
              [class.is-invalid]="(name.touched || name.dirty) && name.invalid"
              [class.is-valid]="name.valid"
+             [(ngModel)]="card.name"
       >
       <div *ngIf="(name.touched || name.dirty) && name.invalid"
           class="alert-danger"
@@ -33,6 +34,7 @@
              formControlName="picture"
              [class.is-invalid]="(picture.touched || picture.dirty) && picture.invalid"
              [class.is-valid]="picture.valid"
+             [(ngModel)]="card.picture"
       >
       <div *ngIf="(picture.touched || picture.dirty) && picture.invalid"
            class="alert-danger"
@@ -53,6 +55,7 @@
              formControlName="powerLvl"
              [class.is-invalid]="(powerLvl.touched || powerLvl.dirty) && powerLvl.invalid"
              [class.is-valid]="powerLvl.valid"
+             [(ngModel)]="card.powerLvl"
       >
       <div *ngIf="(powerLvl.touched || powerLvl.dirty) && powerLvl.invalid"
            class="alert-danger"
@@ -72,6 +75,7 @@
              formControlName="description"
              [class.is-invalid]="(description.touched || description.dirty) && description.invalid"
              [class.is-valid]="description.valid"
+             [(ngModel)]="card.description"
       >
       <div *ngIf="(description.touched || description.dirty) && description.invalid"
            class="alert-danger"
@@ -91,6 +95,7 @@
              formControlName="location"
              [class.is-invalid]="(location.touched || location.dirty) && location.invalid"
              [class.is-valid]="location.valid"
+             [(ngModel)]="card.location"
       >
       <div *ngIf="(location.touched || location.dirty) && location.invalid"
            class="alert-danger"
@@ -115,6 +120,7 @@
               formControlName="ability"
               [class.is-invalid]="(ability.touched || ability.dirty) && ability.invalid"
               [class.is-valid]="ability.valid"
+              [(ngModel)]="card.ability"
       >
         <option *ngFor="let ability of abilities"
                 [ngValue]="ability"
@@ -137,6 +143,7 @@
               formControlName="rowName"
               [class.is-invalid]="(rowName.touched || rowName.dirty) && rowName.invalid"
               [class.is-valid]="rowName.valid"
+              [(ngModel)]="card.rowName"
       >
         <option *ngFor="let rowName of rowNames"
                 [ngValue]="rowName"
@@ -159,6 +166,7 @@
               formControlName="type"
               [class.is-invalid]="(type.touched || type.dirty) && type.invalid"
               [class.is-valid]="type.valid"
+              [(ngModel)]="card.type"
       >
         <option *ngFor="let type of types"
                 [ngValue]="type"
@@ -182,8 +190,10 @@
              formControlName="cardDeck"
              [class.is-invalid]="(cardDeck.touched || cardDeck.dirty) && cardDeck.invalid"
              [class.is-valid]="cardDeck.valid"
+             [(ngModel)]="card.cardDeck"
+
      >
-       <option [selected]="true" disabled value="0">Choose an option</option>
+       <option [selected]="true" disabled value="0" [(ngModel)]="card.cardDeck">{{card.cardDeck.name}}</option>
        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
          {{ cardDeck.name }}
        </option>
