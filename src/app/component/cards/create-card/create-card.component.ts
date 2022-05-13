@@ -3,6 +3,8 @@ import {Card} from "../../../model/card.modele";
 import {CardService} from "../../../service/card/card.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CardDeck} from "../../../model/cardDeck.modele";
+import {CardDeckService} from "../../../service/card/card-deck.service";
 
 @Component({
   selector: 'app-create-card',
@@ -14,8 +16,11 @@ export class CreateCardComponent implements OnInit {
   creationForm: FormGroup;
 
   error = '';
+  cardDecks : CardDeck[];
 
-  constructor(private cardService: CardService, private router :Router) {
+  constructor(private cardService: CardService, private router :Router, private cardDeckService : CardDeckService,) {
+    this.cardDecks=[];
+
     this.creationForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       picture: new FormControl(null, Validators.required),
@@ -25,10 +30,15 @@ export class CreateCardComponent implements OnInit {
       ability: new FormControl(null, Validators.required),
       rowName: new FormControl(null, Validators.required),
       type: new FormControl(null, Validators.required),
+      cardDeck: new FormControl(null, Validators.required),
     });
   }
 
+
   ngOnInit(): void {
+    this.cardDeckService.getAll().subscribe(data => {
+      this.cardDecks = data;
+    });
   }
 
   creationCard() {
@@ -50,21 +60,3 @@ export class CreateCardComponent implements OnInit {
     }
   }
 }
-/*newCard = new Card();
-
-constructor(private cardService : CardService,
-            private router :Router) { }
-
-ngOnInit(): void {
-
-}
-
-createCard(){
-  this.cardService.createCard(this.newCard).subscribe(card => {
-    console.log(card);
-  });
-  this.router.navigate(['card']).then(() => {
-    window.location.reload();
-  });
-}
-}*/

@@ -19,7 +19,6 @@ export class UpdateCardComponent implements OnInit {
   ngOnInit(): void {
     this.cardService.showCard(this.activatedRoute.snapshot.params['id']).
     subscribe( card =>{ this.currentCard = card;
-    console.log(card)
     });
   }
 
@@ -30,5 +29,4 @@ export class UpdateCardComponent implements OnInit {
       },(error) => { alert("error when modification sub"); }
     );
   }
-
 }
