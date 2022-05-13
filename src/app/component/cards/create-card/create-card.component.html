@@ -20,7 +20,7 @@
           class="alert-danger"
       >
         <div *ngIf="name.errors?.['required']">
-          Le nom est obligatoire
+          name required
         </div>
       </div>
     </div>
@@ -48,18 +48,10 @@
     <div class="col-sm-6 col-md-4">
       <label for="ability">Choose an ability:</label>
       <select class="form-select" id="ability" formControlName="ability">
-        <option [selected]="true" disabled>Choose an option</option>
-        <option label="BERSERKER">BERSERKER</option>
-        <option label="COMMANDER">COMMANDER</option>
-        <option label="DECOY">DECOY</option>
-        <option label="MEDIC">MEDIC</option>
-        <option label="MORALE_BOOST">MORALE_BOOST</option>
-        <option label="MARDROEME">MARDROEME</option>
-        <option label="MUSTER">MUSTER</option>
-        <option label="SCORCH">SCORCH</option>
-        <option label="SPY">SPY</option>
-        <option label="TIGHT_BOND">TIGHT_BOND</option>
-        <option label="SUMMON_AVENGER">SUMMON_AVENGER</option>
+        <option *ngFor="let ability of abilities"
+                [ngValue]="ability"
+                [disabled]="ability === 'Choose an option'"
+        >{{ability}}</option>
       </select>
     </div>
 
@@ -75,25 +67,24 @@
 
     <div class="col-sm-6 col-md-4">
       <label for="type">Choose a type:</label>
-      <select class="form-select" id="type"  formControlName="type">
-        <option [selected]="true" disabled value="0">Choose an option</option>
-        <option label="UNIT" value="UNIT">UNIT</option>
-        <option label="LEADER" value="LEADER">LEADER</option>
-        <option label="HERO" value="HERO">HERO</option>
-        <option label="SPECIAL" value="SPECIAL">SPECIAL</option>
+      <select class="form-select" id="type" formControlName="type">
+        <option *ngFor="let type of types"
+                [ngValue]="type"
+                [disabled]="type === 'Choose an option'"
+        >{{type}}</option>
       </select>
     </div>
 
 
-<!--    <div class="col-sm-6 col-md-4">-->
-<!--      <label for="cardDeck">Choose a cardDeck:</label>-->
-<!--      <select class="form-select" id="cardDeck"  formControlName="cardDeck">-->
-<!--        <option [selected]="true" disabled value="0">Choose an option</option>-->
-<!--        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">-->
-<!--          {{ cardDeck.name }}-->
-<!--        </option>-->
-<!--      </select>-->
-<!--    </div>-->
+   <div class="col-sm-6 col-md-4">
+     <label for="cardDeck">Choose a cardDeck:</label>
+     <select class="form-select" id="cardDeck"  formControlName="cardDeck">
+       <option [selected]="true" disabled value="0">Choose an option</option>
+       <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
+         {{ cardDeck.name }}
+       </option>
+     </select>
+   </div>
 
     <div *ngIf="error != ''">
       <p>{{error}}</p>

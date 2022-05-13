@@ -6,6 +6,8 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
 import {CardDeck} from "../../../model/cardDeck.modele";
 import {CardDeckService} from "../../../service/card/card-deck.service";
 import {RowName} from "../../../model/enum/row-name";
+import {Type} from "../../../model/enum/type";
+import {Ability} from "../../../model/enum/ability";
 
 @Component({
   selector: 'app-create-card',
@@ -20,6 +22,7 @@ export class CreateCardComponent implements OnInit {
   creationForm: FormGroup;
   error = '';
   cardDecks : CardDeck[];
+
   rowNames: RowName[] = [
     RowName.EMPTY,
     RowName.CLOSE_COMBAT,
@@ -27,6 +30,26 @@ export class CreateCardComponent implements OnInit {
     RowName.RANGED,
     RowName.SIEGE
   ];
+  types: Type[] = [
+    Type.EMPTY,
+    Type.HERO,
+    Type.LEADER,
+    Type.SPECIAL,
+    Type.UNIT
+  ]
+  abilities: Ability[]= [
+    Ability.EMPTY,
+    Ability.BERSERKER,
+    Ability.COMMANDER,
+    Ability.MARDROEME,
+    Ability.DECOY,
+    Ability.MORALE_BOOST,
+    Ability.MUSTER,
+    Ability.SCORCH,
+    Ability.SPY,
+    Ability.SUMMON_AVENGER,
+    Ability.TIGHT_BOND
+  ]
 
   constructor(
     private cardService: CardService,
@@ -44,12 +67,36 @@ export class CreateCardComponent implements OnInit {
       ability: new FormControl(this.card.ability, Validators.required),
       rowName: new FormControl(this.card.rowName, Validators.required),
       type: new FormControl(this.card.type, Validators.required),
-      // cardDeck: new FormControl(this.card.cardDeck, Validators.required),
+      cardDeck: new FormControl(this.card.cardDeck, Validators.required),
     });
   }
 
   get name(): AbstractControl {
     return <AbstractControl> this.creationForm.get('name');
+  }
+  get picture(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('picture');
+  }
+  get powerLvl(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('powerLvl');
+  }
+  get description(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('description');
+  }
+  get location(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('location');
+  }
+  get ability(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('ability');
+  }
+  get rowName(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('rowName');
+  }
+  get type(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('type');
+  }
+  get cardDeck(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('cardDeck');
   }
 
   ngOnInit(): void {
