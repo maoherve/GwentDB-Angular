@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Card} from "../../../model/card.modele";
 import {CardService} from "../../../service/card/card.service";
 import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CardDeck} from "../../../model/cardDeck.modele";
 import {CardDeckService} from "../../../service/card/card-deck.service";
 
@@ -14,7 +14,6 @@ import {CardDeckService} from "../../../service/card/card-deck.service";
 export class CreateCardComponent implements OnInit {
 
   creationForm: FormGroup;
-
   error = '';
   cardDecks : CardDeck[];
 
