@@ -27,27 +27,95 @@
 
     <div class="col-sm-6 col-md-4">
       <label>Card picture</label>
-      <input placeholder="Picture" type="text" name="CardPicture" class="form-control" formControlName="picture">
+      <input placeholder="Picture"
+             type="text" name="CardPicture"
+             class="form-control"
+             formControlName="picture"
+             [class.is-invalid]="(picture.touched || picture.dirty) && picture.invalid"
+             [class.is-valid]="picture.valid"
+      >
+      <div *ngIf="(picture.touched || picture.dirty) && picture.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="picture.errors?.['required']">
+          picture required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card level</label>
-      <input placeholder="Level" type="number" min="1" name="CardLevel" class="form-control" formControlName="powerLvl">
+      <input placeholder="Level"
+             type="number"
+             min="1"
+             name="CardLevel"
+             class="form-control"
+             formControlName="powerLvl"
+             [class.is-invalid]="(powerLvl.touched || powerLvl.dirty) && powerLvl.invalid"
+             [class.is-valid]="powerLvl.valid"
+      >
+      <div *ngIf="(powerLvl.touched || powerLvl.dirty) && powerLvl.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="powerLvl.errors?.['required']">
+          power Lvl required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card description</label>
-      <input placeholder="Description" type="text" name="CardDescription" class="form-control" formControlName="description">
+      <input placeholder="Description"
+             type="text"
+             name="CardDescription"
+             class="form-control"
+             formControlName="description"
+             [class.is-invalid]="(description.touched || description.dirty) && description.invalid"
+             [class.is-valid]="description.valid"
+      >
+      <div *ngIf="(description.touched || description.dirty) && description.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="description.errors?.['required']">
+          description required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card location</label>
-      <input placeholder="Location" type="text" name="CardLocation" class="form-control" formControlName="location">
+      <input placeholder="Location"
+             type="text"
+             name="CardLocation"
+             class="form-control"
+             formControlName="location"
+             [class.is-invalid]="(location.touched || location.dirty) && location.invalid"
+             [class.is-valid]="location.valid"
+      >
+      <div *ngIf="(location.touched || location.dirty) && location.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="location.errors?.['required']">
+          location required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label for="ability">Choose an ability:</label>
-      <select class="form-select" id="ability" formControlName="ability">
+      <div *ngIf="(ability.touched || ability.dirty) && ability.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="ability.errors?.['required']">
+          ability required
+        </div>
+      </div>
+      <select class="form-select"
+              id="ability"
+              formControlName="ability"
+              [class.is-invalid]="(ability.touched || ability.dirty) && ability.invalid"
+              [class.is-valid]="ability.valid"
+      >
         <option *ngFor="let ability of abilities"
                 [ngValue]="ability"
                 [disabled]="ability === 'Choose an option'"
@@ -57,7 +125,19 @@
 
     <div class="col-sm-6 col-md-4">
       <label for="row">Choose an row:</label>
-      <select class="form-select" id="row" formControlName="rowName">
+      <div *ngIf="(rowName.touched || rowName.dirty) && rowName.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="rowName.errors?.['required']">
+          rowName required
+        </div>
+      </div>
+      <select class="form-select"
+              id="row"
+              formControlName="rowName"
+              [class.is-invalid]="(rowName.touched || rowName.dirty) && rowName.invalid"
+              [class.is-valid]="rowName.valid"
+      >
         <option *ngFor="let rowName of rowNames"
                 [ngValue]="rowName"
                 [disabled]="rowName === 'Choose an option'"
@@ -67,7 +147,19 @@
 
     <div class="col-sm-6 col-md-4">
       <label for="type">Choose a type:</label>
-      <select class="form-select" id="type" formControlName="type">
+      <div *ngIf="(type.touched || type.dirty) && type.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="type.errors?.['required']">
+          type required
+        </div>
+      </div>
+      <select class="form-select"
+              id="type"
+              formControlName="type"
+              [class.is-invalid]="(type.touched || type.dirty) && type.invalid"
+              [class.is-valid]="type.valid"
+      >
         <option *ngFor="let type of types"
                 [ngValue]="type"
                 [disabled]="type === 'Choose an option'"
@@ -78,7 +170,19 @@
 
    <div class="col-sm-6 col-md-4">
      <label for="cardDeck">Choose a cardDeck:</label>
-     <select class="form-select" id="cardDeck"  formControlName="cardDeck">
+     <div *ngIf="(cardDeck.touched || cardDeck.dirty) && cardDeck.invalid"
+          class="alert-danger"
+     >
+       <div *ngIf="cardDeck.errors?.['required']">
+         cardDeck required
+       </div>
+     </div>
+     <select class="form-select"
+             id="cardDeck"
+             formControlName="cardDeck"
+             [class.is-invalid]="(cardDeck.touched || cardDeck.dirty) && cardDeck.invalid"
+             [class.is-valid]="cardDeck.valid"
+     >
        <option [selected]="true" disabled value="0">Choose an option</option>
        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
          {{ cardDeck.name }}

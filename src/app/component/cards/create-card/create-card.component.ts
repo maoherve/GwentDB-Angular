@@ -37,7 +37,7 @@ export class CreateCardComponent implements OnInit {
     Type.SPECIAL,
     Type.UNIT
   ]
-  abilities: Ability[]= [
+  abilities: Ability[] = [
     Ability.EMPTY,
     Ability.BERSERKER,
     Ability.COMMANDER,
@@ -107,6 +107,7 @@ export class CreateCardComponent implements OnInit {
         // initialiser l'attribut "card" avec celle-ci
         console.log('ici dans le if')
         this.onEdition = true;
+
       }
     });
     this.cardDeckService.getAll().subscribe(data => {
@@ -132,4 +133,5 @@ export class CreateCardComponent implements OnInit {
       this.error = `Formulaire as some errors`;
     }
   }
+
 }
