@@ -1,4 +1,5 @@
-import { CardDeck } from './cardDeck.modele';
+import {CardDeck} from './cardDeck.modele';
+import {RowName} from "./enum/row-name";
 
 export class Card {
 
@@ -9,7 +10,7 @@ export class Card {
   private _description : string = "";
   private _location : string = "";
   private _ability : string = "";
-  private _rowName : string = "";
+  private _rowName : RowName = RowName.EMPTY;
   private _type : string = "";
   private _cardDeck : CardDeck = new CardDeck();
 
@@ -85,11 +86,11 @@ export class Card {
     this._ability = value;
   }
 
-  get rowName(): string {
+  get rowName(): RowName {
     return this._rowName;
   }
 
-  set rowName(value: string) {
+  set rowName(value: RowName) {
     this._rowName = value;
   }
 

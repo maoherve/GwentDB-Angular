@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Card} from "../../../model/card.modele";
 import {CardService} from "../../../service/card/card.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CardDeck} from "../../../model/cardDeck.modele";
 import {CardDeckService} from "../../../service/card/card-deck.service";
+import {RowName} from "../../../model/enum/row-name";
 
 @Component({
   selector: 'app-create-card',
@@ -13,28 +14,54 @@ import {CardDeckService} from "../../../service/card/card-deck.service";
 })
 export class CreateCardComponent implements OnInit {
 
+  card: Card = new Card();
+  onEdition: boolean = false;
+
   creationForm: FormGroup;
   error = '';
   cardDecks : CardDeck[];
+  rowNames: RowName[] = [
+    RowName.EMPTY,
+    RowName.CLOSE_COMBAT,
+    RowName.AGILE,
+    RowName.RANGED,
+    RowName.SIEGE
+  ];
 
-  constructor(private cardService: CardService, private router :Router, private cardDeckService : CardDeckService,) {
+  constructor(
+    private cardService: CardService,
+    private router :Router,
+    private cardDeckService : CardDeckService,
+    private activatedRoute: ActivatedRoute,
+  ) {
     this.cardDecks=[];
-
     this.creationForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      picture: new FormControl(null, Validators.required),
-      powerLvl: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      location: new FormControl(null, Validators.required),
-      ability: new FormControl(null, Validators.required),
-      rowName: new FormControl(null, Validators.required),
-      type: new FormControl(null, Validators.required),
-      cardDeck: new FormControl(null, Validators.required),
+      name: new FormControl(this.card.name, Validators.required),
+      picture: new FormControl(this.card.picture, Validators.required),
+      powerLvl: new FormControl(this.card.powerLvl, Validators.required),
+      description: new FormControl(this.card.description, Validators.required),
+      location: new FormControl(this.card.location, Validators.required),
+      ability: new FormControl(this.card.ability, Validators.required),
+      rowName: new FormControl(this.card.rowName, Validators.required),
+      type: new FormControl(this.card.type, Validators.required),
+      // cardDeck: new FormControl(this.card.cardDeck, Validators.required),
     });
   }
 
+  get name(): AbstractControl {
+    return <AbstractControl> this.creationForm.get('name');
+  }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      const id: string = params['id'];
+      if (id) {
+        // récupérer l'objet card depuis l'api
+        // initialiser l'attribut "card" avec celle-ci
+        console.log('ici dans le if')
+        this.onEdition = true;
+      }
+    });
     this.cardDeckService.getAll().subscribe(data => {
       this.cardDecks = data;
     });

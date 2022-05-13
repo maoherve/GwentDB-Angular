@@ -1,14 +1,28 @@
 <div class="container mt-5">
 
   <div>
-    <h2>Create card :</h2>
+    <h2 *ngIf="onEdition">Update card :</h2>
+    <h2 *ngIf="!onEdition">Create card :</h2>
   </div>
 
   <form [formGroup]="creationForm" (submit)="creationCard()">
 
     <div class="col-sm-6 col-md-4" >
       <label>Card name</label>
-      <input placeholder="Name" type="text" class="form-control" formControlName="name">
+      <input placeholder="Name"
+             type="text"
+             class="form-control"
+             formControlName="name"
+             [class.is-invalid]="(name.touched || name.dirty) && name.invalid"
+             [class.is-valid]="name.valid"
+      >
+      <div *ngIf="(name.touched || name.dirty) && name.invalid"
+          class="alert-danger"
+      >
+        <div *ngIf="name.errors?.['required']">
+          Le nom est obligatoire
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
@@ -52,11 +66,10 @@
     <div class="col-sm-6 col-md-4">
       <label for="row">Choose an row:</label>
       <select class="form-select" id="row" formControlName="rowName">
-        <option [selected]="true" disabled>Choose an option</option>
-        <option label="CLOSE_COMBAT">CLOSE_COMBAT</option>
-        <option label="RANGED">RANGED</option>
-        <option label="AGILE">AGILE</option>
-        <option label="SIEGE">SIEGE</option>
+        <option *ngFor="let rowName of rowNames"
+                [ngValue]="rowName"
+                [disabled]="rowName === 'Choose an option'"
+        >{{rowName}}</option>
       </select>
     </div>
 
@@ -72,22 +85,33 @@
     </div>
 
 
-    <div class="col-sm-6 col-md-4">
-      <label for="cardDeck">Choose a cardDeck:</label>
-      <select class="form-select" id="cardDeck"  formControlName="cardDeck">
-        <option [selected]="true" disabled value="0">Choose an option</option>
-        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
-          {{ cardDeck.name }}
-        </option>
-      </select>
-    </div>
+<!--    <div class="col-sm-6 col-md-4">-->
+<!--      <label for="cardDeck">Choose a cardDeck:</label>-->
+<!--      <select class="form-select" id="cardDeck"  formControlName="cardDeck">-->
+<!--        <option [selected]="true" disabled value="0">Choose an option</option>-->
+<!--        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">-->
+<!--          {{ cardDeck.name }}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
 
     <div *ngIf="error != ''">
       <p>{{error}}</p>
     </div>
 
     <div class="mt-2">
-      <button type="submit" class="btn btn-success">Create</button>
+      <button type="submit" class="btn btn-success"
+              *ngIf="!onEdition"
+              [disabled]="creationForm.invalid"
+      >
+        Create
+      </button>
+      <button type="submit" class="btn btn-success"
+              *ngIf="onEdition"
+              [disabled]="creationForm.invalid"
+      >
+        Update
+      </button>
     </div>
 
   </form>

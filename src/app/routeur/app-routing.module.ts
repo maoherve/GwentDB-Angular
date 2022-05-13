@@ -18,7 +18,7 @@ const routes: Routes = [
 
   { path: 'card', component: CardComponent, /*canActivate: [AuthGuard]*/ },
   { path: 'cardDeck', component: CardDeckComponent },
-  { path: 'updateCard/:id', component: UpdateCardComponent },
+  { path: 'updateCard/:id', component: CreateCardComponent },
   { path: 'createCard', component: CreateCardComponent },
 
   { path: 'updateCardDeck/:id', component: UpdateCardDeckComponent },
