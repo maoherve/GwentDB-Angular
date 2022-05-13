@@ -3,7 +3,6 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
-
 const AUTH_API = environment.API_URL + '/api/auth/';
 
 const httpOptions = {
@@ -32,4 +31,6 @@ export class AuthService {
       password
     }, httpOptions);
   }
+
+
 }
