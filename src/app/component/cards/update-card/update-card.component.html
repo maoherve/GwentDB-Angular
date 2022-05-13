@@ -49,7 +49,7 @@
 
     <div class="col-sm-6 col-md-4">
       <label>CardDeck id</label>
-      <input type="number" min="0" *ngIf=" currentCard.cardDeck != null" [(ngModel)]= "currentCard.cardDeck.id" name="CardDeck" class="form-control">
+      <input type="text"  *ngIf=" currentCard.cardDeck != null" [(ngModel)]= "currentCard.cardDeck.name" name="CardDeck" class="form-control">
     </div>
 
     <div class="mt-2">

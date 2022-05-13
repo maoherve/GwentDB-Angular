@@ -75,7 +75,7 @@
     <div class="col-sm-6 col-md-4">
       <label for="cardDeck">Choose a cardDeck:</label>
       <select class="form-select" id="cardDeck"  formControlName="cardDeck">
-        <option [selected]="true"  disabled value="0">Choose an option</option>
+        <option [selected]="true" disabled value="0">Choose an option</option>
         <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
           {{ cardDeck.name }}
         </option>
