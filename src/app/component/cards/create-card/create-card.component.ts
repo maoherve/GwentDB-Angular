@@ -92,6 +92,13 @@ export class CreateCardComponent implements OnInit {
     });
   }
 
+  cardSubmit(): void {
+    if (this.onEdition) {
+      this.updateCard();
+    }
+    this.creationCard();
+  }
+
   creationCard() {
 
     this.error = '';

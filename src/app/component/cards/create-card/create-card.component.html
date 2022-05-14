@@ -5,7 +5,7 @@
     <h2 *ngIf="!onEdition">Create card :</h2>
   </div>
 
-  <form [formGroup]="creationForm" (submit)="creationCard()">
+  <form [formGroup]="creationForm" (submit)="cardSubmit()">
 
     <div class="col-sm-6 col-md-4" >
       <label>Card name</label>
