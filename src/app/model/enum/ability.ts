@@ -1,0 +1,16 @@
+
+export enum Ability {
+
+  EMPTY = "Choose an option",
+  BERSERKER = "BERSERKER",
+  COMMANDER = "COMMANDER",
+  DECOY = "DECOY",
+  MORALE_BOOST = "MORALE_BOOST",
+  MARDROEME = "MARDROEME",
+  MUSTER = "MUSTER",
+  SCORCH = "SCORCH",
+  SPY = "SPY",
+  TIGHT_BOND = "TIGHT_BOND",
+  SUMMON_AVENGER = "SUMMON_AVENGER",
+
+}

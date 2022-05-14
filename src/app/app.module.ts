@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './layout/header/header.component';
 import { BodyComponent } from './layout/body/body.component';
 import { CardDeckComponent } from './component/card-decks/card-deck/card-deck.component';
-import { UpdateCardComponent } from './component/cards/update-card/update-card.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CreateCardComponent } from './component/cards/create-card/create-card.component';
 import { UpdateCardDeckComponent } from './component/card-decks/update-card-deck/update-card-deck.component';
@@ -29,7 +28,6 @@ import { ProfileComponent } from './component/users/profile/profile.component';
     BodyComponent,
     AppComponent,
     CardDeckComponent,
-    UpdateCardComponent,
     CreateCardComponent,
     UpdateCardDeckComponent,
     CreateCardDeckComponent,

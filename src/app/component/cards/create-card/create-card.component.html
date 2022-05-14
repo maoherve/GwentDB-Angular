@@ -1,93 +1,222 @@
 <div class="container mt-5">
 
   <div>
-    <h2>Create card :</h2>
+    <h2 *ngIf="onEdition">Update card :</h2>
+    <h2 *ngIf="!onEdition">Create card :</h2>
   </div>
 
-  <form [formGroup]="creationForm" (submit)="creationCard()">
+  <form [formGroup]="creationForm" (submit)="cardSubmit()">
 
     <div class="col-sm-6 col-md-4" >
       <label>Card name</label>
-      <input placeholder="Name" type="text" class="form-control" formControlName="name">
+      <input placeholder="Name"
+             type="text"
+             class="form-control"
+             formControlName="name"
+             [class.is-invalid]="(name.touched || name.dirty) && name.invalid"
+             [class.is-valid]="name.valid"
+             [(ngModel)]="card.name"
+      >
+      <div *ngIf="(name.touched || name.dirty) && name.invalid"
+          class="alert-danger"
+      >
+        <div *ngIf="name.errors?.['required']">
+          name required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card picture</label>
-      <input placeholder="Picture" type="text" name="CardPicture" class="form-control" formControlName="picture">
+      <input placeholder="Picture"
+             type="text" name="CardPicture"
+             class="form-control"
+             formControlName="picture"
+             [class.is-invalid]="(picture.touched || picture.dirty) && picture.invalid"
+             [class.is-valid]="picture.valid"
+             [(ngModel)]="card.picture"
+      >
+      <div *ngIf="(picture.touched || picture.dirty) && picture.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="picture.errors?.['required']">
+          picture required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card level</label>
-      <input placeholder="Level" type="number" min="1" name="CardLevel" class="form-control" formControlName="powerLvl">
+      <input placeholder="Level"
+             type="number"
+             min="1"
+             name="CardLevel"
+             class="form-control"
+             formControlName="powerLvl"
+             [class.is-invalid]="(powerLvl.touched || powerLvl.dirty) && powerLvl.invalid"
+             [class.is-valid]="powerLvl.valid"
+             [(ngModel)]="card.powerLvl"
+      >
+      <div *ngIf="(powerLvl.touched || powerLvl.dirty) && powerLvl.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="powerLvl.errors?.['required']">
+          power Lvl required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card description</label>
-      <input placeholder="Description" type="text" name="CardDescription" class="form-control" formControlName="description">
+      <input placeholder="Description"
+             type="text"
+             name="CardDescription"
+             class="form-control"
+             formControlName="description"
+             [class.is-invalid]="(description.touched || description.dirty) && description.invalid"
+             [class.is-valid]="description.valid"
+             [(ngModel)]="card.description"
+      >
+      <div *ngIf="(description.touched || description.dirty) && description.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="description.errors?.['required']">
+          description required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label>Card location</label>
-      <input placeholder="Location" type="text" name="CardLocation" class="form-control" formControlName="location">
+      <input placeholder="Location"
+             type="text"
+             name="CardLocation"
+             class="form-control"
+             formControlName="location"
+             [class.is-invalid]="(location.touched || location.dirty) && location.invalid"
+             [class.is-valid]="location.valid"
+             [(ngModel)]="card.location"
+      >
+      <div *ngIf="(location.touched || location.dirty) && location.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="location.errors?.['required']">
+          location required
+        </div>
+      </div>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label for="ability">Choose an ability:</label>
-      <select class="form-select" id="ability" formControlName="ability">
-        <option [selected]="true" disabled>Choose an option</option>
-        <option label="BERSERKER">BERSERKER</option>
-        <option label="COMMANDER">COMMANDER</option>
-        <option label="DECOY">DECOY</option>
-        <option label="MEDIC">MEDIC</option>
-        <option label="MORALE_BOOST">MORALE_BOOST</option>
-        <option label="MARDROEME">MARDROEME</option>
-        <option label="MUSTER">MUSTER</option>
-        <option label="SCORCH">SCORCH</option>
-        <option label="SPY">SPY</option>
-        <option label="TIGHT_BOND">TIGHT_BOND</option>
-        <option label="SUMMON_AVENGER">SUMMON_AVENGER</option>
+      <div *ngIf="(ability.touched || ability.dirty) && ability.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="ability.errors?.['required']">
+          ability required
+        </div>
+      </div>
+      <select class="form-select"
+              id="ability"
+              formControlName="ability"
+              [class.is-invalid]="(ability.touched || ability.dirty) && ability.invalid"
+              [class.is-valid]="ability.valid"
+              [(ngModel)]="card.ability"
+      >
+        <option *ngFor="let ability of abilities"
+                [ngValue]="ability"
+                [disabled]="ability === 'Choose an option'"
+        >{{ability}}</option>
       </select>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label for="row">Choose an row:</label>
-      <select class="form-select" id="row" formControlName="rowName">
-        <option [selected]="true" disabled>Choose an option</option>
-        <option label="CLOSE_COMBAT">CLOSE_COMBAT</option>
-        <option label="RANGED">RANGED</option>
-        <option label="AGILE">AGILE</option>
-        <option label="SIEGE">SIEGE</option>
+      <div *ngIf="(rowName.touched || rowName.dirty) && rowName.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="rowName.errors?.['required']">
+          rowName required
+        </div>
+      </div>
+      <select class="form-select"
+              id="row"
+              formControlName="rowName"
+              [class.is-invalid]="(rowName.touched || rowName.dirty) && rowName.invalid"
+              [class.is-valid]="rowName.valid"
+              [(ngModel)]="card.rowName"
+      >
+        <option *ngFor="let rowName of rowNames"
+                [ngValue]="rowName"
+                [disabled]="rowName === 'Choose an option'"
+        >{{rowName}}</option>
       </select>
     </div>
 
     <div class="col-sm-6 col-md-4">
       <label for="type">Choose a type:</label>
-      <select class="form-select" id="type"  formControlName="type">
-        <option [selected]="true" disabled value="0">Choose an option</option>
-        <option label="UNIT" value="UNIT">UNIT</option>
-        <option label="LEADER" value="LEADER">LEADER</option>
-        <option label="HERO" value="HERO">HERO</option>
-        <option label="SPECIAL" value="SPECIAL">SPECIAL</option>
+      <div *ngIf="(type.touched || type.dirty) && type.invalid"
+           class="alert-danger"
+      >
+        <div *ngIf="type.errors?.['required']">
+          type required
+        </div>
+      </div>
+      <select class="form-select"
+              id="type"
+              formControlName="type"
+              [class.is-invalid]="(type.touched || type.dirty) && type.invalid"
+              [class.is-valid]="type.valid"
+              [(ngModel)]="card.type"
+      >
+        <option *ngFor="let type of types"
+                [ngValue]="type"
+                [disabled]="type === 'Choose an option'"
+        >{{type}}</option>
       </select>
     </div>
 
 
-    <div class="col-sm-6 col-md-4">
-      <label for="cardDeck">Choose a cardDeck:</label>
-      <select class="form-select" id="cardDeck"  formControlName="cardDeck">
-        <option [selected]="true"  disabled value="0">Choose an option</option>
-        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
-          {{ cardDeck.name }}
-        </option>
-      </select>
-    </div>
+   <div class="col-sm-6 col-md-4">
+     <label for="cardDeck">Choose a cardDeck:</label>
+     <div *ngIf="(cardDeck.touched || cardDeck.dirty) && cardDeck.invalid"
+          class="alert-danger"
+     >
+       <div *ngIf="cardDeck.errors?.['required']">
+         cardDeck required
+       </div>
+     </div>
+     <select class="form-select"
+             id="cardDeck"
+             formControlName="cardDeck"
+             [class.is-invalid]="(cardDeck.touched || cardDeck.dirty) && cardDeck.invalid"
+             [class.is-valid]="cardDeck.valid"
+             [(ngModel)]="card.cardDeck"
+
+     >
+       <option [selected]="true" disabled value="0" [(ngModel)]="card.cardDeck">{{card.cardDeck.name}}</option>
+       <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
+         {{ cardDeck.name }}
+       </option>
+     </select>
+   </div>
 
     <div *ngIf="error != ''">
       <p>{{error}}</p>
     </div>
 
     <div class="mt-2">
-      <button type="submit" class="btn btn-success">Create</button>
+      <button type="submit" class="btn btn-success"
+              *ngIf="!onEdition"
+              [disabled]="creationForm.invalid"
+      >
+        Create
+      </button>
+      <button type="submit" class="btn btn-success"
+              *ngIf="onEdition"
+              [disabled]="creationForm.invalid"
+      >
+        Update
+      </button>
     </div>
 
   </form>

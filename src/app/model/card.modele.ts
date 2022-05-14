@@ -1,4 +1,7 @@
-import { CardDeck } from './cardDeck.modele';
+import {CardDeck} from './cardDeck.modele';
+import {RowName} from "./enum/row-name";
+import {Ability} from "./enum/ability";
+import {Type} from "./enum/type";
 
 export class Card {
 
@@ -8,9 +11,9 @@ export class Card {
   private _powerLvl : number = 0;
   private _description : string = "";
   private _location : string = "";
-  private _ability : string = "";
-  private _rowName : string = "";
-  private _type : string = "";
+  private _ability : Ability = Ability.EMPTY;
+  private _rowName : RowName = RowName.EMPTY;
+  private _type : Type = Type.EMPTY;
   private _cardDeck : CardDeck = new CardDeck();
 
 
@@ -77,27 +80,27 @@ export class Card {
 
 
 
-  get ability(): string {
+  get ability(): Ability {
     return this._ability;
   }
 
-  set ability(value: string) {
+  set ability(value: Ability) {
     this._ability = value;
   }
 
-  get rowName(): string {
+  get rowName(): RowName {
     return this._rowName;
   }
 
-  set rowName(value: string) {
+  set rowName(value: RowName) {
     this._rowName = value;
   }
 
-  get type(): string {
+  get type(): Type {
     return this._type;
   }
 
-  set type(value: string) {
+  set type(value: Type) {
     this._type = value;
   }
 }
