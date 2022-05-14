@@ -16,6 +16,7 @@ import {Ability} from "../../../model/enum/ability";
 })
 export class CreateCardComponent implements OnInit {
 
+  ngSelect = 0;
   card: Card = new Card();
   onEdition: boolean = false;
 
@@ -95,14 +96,14 @@ export class CreateCardComponent implements OnInit {
   cardSubmit(): void {
     if (this.onEdition) {
       this.updateCard();
-    }
+    }else {
     this.creationCard();
+    }
   }
 
   creationCard() {
 
     this.error = '';
-
     if(this.creationForm.valid) {
       const data: any = this.creationForm.value;
 

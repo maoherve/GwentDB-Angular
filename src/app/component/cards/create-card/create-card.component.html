@@ -193,7 +193,7 @@
              [(ngModel)]="card.cardDeck"
 
      >
-       <option [selected]="true" disabled value="0" [(ngModel)]="card.cardDeck">{{card.cardDeck.name}}</option>
+       <option disabled value="0" [(ngModel)]="card.cardDeck">{{card.cardDeck.name}}</option>
        <option *ngFor="let cardDeck of cardDecks" [ngValue]="cardDeck">
          {{ cardDeck.name }}
        </option>
