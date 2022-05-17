@@ -4,6 +4,7 @@ import {CardDeck} from "../../model/cardDeck.modele";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {Card} from "../../model/card.modele";
+import { UrlApiConstants } from '../url-api-constants';
 
 
 const httpOptions = {
@@ -25,23 +26,23 @@ export class CardDeckService {
 
   //Get All card deck
   getAll() {
-    return this.httpClient.get<CardDeck[]>(environment.API_URL + '/cardDecks');
+    return this.httpClient.get<CardDeck[]>(UrlApiConstants.API_URL + UrlApiConstants.API_URL_CARDDECKS);
   }
 
   //Delete card deck
   deleteCardDeck(id : number) {
-    const url = `${environment.API_URL}/cardDecks/${id}`;
+    const url = `${UrlApiConstants.API_URL + UrlApiConstants.API_URL_CARDDECKS_ID}${id}`;
     return this.httpClient.delete(url, httpOptions);
   }
 
   //Update
   showCardDeck(id: number): Observable<CardDeck> {
-    const url = `${environment.API_URL}/cardDecks/${id}`;
-    return this.httpClient.get<Card>(url);
+    const url = `${UrlApiConstants.API_URL + UrlApiConstants.API_URL_CARDDECKS_ID}${id}`;
+    return this.httpClient.get<CardDeck>(url);
   }
   updateCardDeck(cardDeck : CardDeck) : Observable<CardDeck>
   {
-    const url = `${environment.API_URL}/cardDecks/${cardDeck.id}`;
+    const url = `${UrlApiConstants.API_URL + UrlApiConstants.API_URL_CARDDECKS_ID}${cardDeck.id}`;
     return this.httpClient.put<CardDeck>(url, cardDeck);
   }
 
@@ -49,6 +50,6 @@ export class CardDeckService {
   //Create
   createCardDeck(cardDeck : CardDeck) : Observable<CardDeck>
   {
-    return this.httpClient.post<CardDeck>(environment.API_URL + '/cardDecks', cardDeck);
+    return this.httpClient.post<CardDeck>(UrlApiConstants.API_URL + UrlApiConstants.API_URL_CARDDECKS, cardDeck);
   }
 }
