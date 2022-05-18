@@ -12,3 +12,11 @@
 .form-control {
   box-shadow: 5px 5px 10px 0px #908f8f;
 }
+
+.cardContainer {
+  text-align: center;
+}
+
+.logo {
+  padding: 20px;
+}

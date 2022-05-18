@@ -13,3 +13,11 @@
   padding-bottom: 50px;
   margin:auto;
 }
+
+.productContainer {
+  text-align: center;
+}
+
+.logo {
+  padding: 20px;
+}
