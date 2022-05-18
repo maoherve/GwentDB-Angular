@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../../model/users.modele";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
+import { UrlApiConstants } from '../url-api-constants';
 
 
 const httpOptions = {
@@ -23,7 +24,7 @@ export class UsersService {
 
   //Get All user
   getAll() {
-    return this.httpClient.get<User[]>(environment.API_URL + '/user');
+    return this.httpClient.get<User[]>(UrlApiConstants.API_URL + UrlApiConstants.API_URL_USERS);
   }
 
   /*getPublicContent(): Observable<any> {

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CardComponent } from "../component/cards/card/card.component";
 import {CardDeckComponent} from "../component/card-decks/card-deck/card-deck.component";
-import {UpdateCardComponent} from "../component/cards/update-card/update-card.component";
 import {CreateCardComponent} from "../component/cards/create-card/create-card.component";
 import {UpdateCardDeckComponent} from "../component/card-decks/update-card-deck/update-card-deck.component";
 import {CreateCardDeckComponent} from "../component/card-decks/create-card-deck/create-card-deck.component";
@@ -16,9 +15,9 @@ const routes: Routes = [
 
   { path: 'home', component: HomeCardComponent },
 
-  { path: 'card', component: CardComponent, canActivate: [AuthGuard] },
+  { path: 'card', component: CardComponent, /*canActivate: [AuthGuard]*/ },
   { path: 'cardDeck', component: CardDeckComponent },
-  { path: 'updateCard/:id', component: UpdateCardComponent },
+  { path: 'updateCard/:id', component: CreateCardComponent },
   { path: 'createCard', component: CreateCardComponent },
 
   { path: 'updateCardDeck/:id', component: UpdateCardDeckComponent },
